@@ -25,7 +25,7 @@ const filesConfig = {
 
 /** @type {Config} */
 const ignoresConfig = {
-    ignores: ['packages', 'commitlint.config.ts'],
+    ignores: ['packages', 'commitlint.config.ts', 'dangerfile.ts'],
 };
 
 /** @type {Config} */
@@ -65,7 +65,7 @@ const jsConfig = {
             },
             {
                 message:
-                    "Avoid import/export type { Type } from './module'. Prefer import/export { type Type } from './module'.",
+                    'Avoid import/export type { Type } from `./module`. Prefer import/export { type Type } from `./module`.',
                 selector:
                     'ImportDeclaration[importKind=type],ExportNamedDeclaration[exportKind=type]',
             },
