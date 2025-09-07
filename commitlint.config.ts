@@ -1,11 +1,12 @@
 import type { UserConfig } from '@commitlint/types';
 import { ProjectPrefix } from './project.config';
 
-const COMMIT_MESSAGE_REGEX = new RegExp(
-    `^(\\w+-\\d+): ([${ProjectPrefix.MODIFIERS.join('')}]) (.+)$`,
+const COMMIT_MESSAGE_REGEXP = new RegExp(
+    `^(((${ProjectPrefix.APP})-[0-9]{1,6})|(${ProjectPrefix.ENVIRONMENTS.join(
+        '|',
+    )})): ([${ProjectPrefix.MODIFIERS.join(',')}]) (.*\\S)$`,
 );
-
-const ERROR_MESSAGE = `❌ Invalid commit message format.
+const COMMIT_ERROR_MESSAGE = `❌ Invalid commit message format.
 
 Expected: <project-prefix>-<issue-number>: <modifier> <description>
 
@@ -20,18 +21,23 @@ Examples:
 - rg-212: - dashboard card size
 `;
 
+const validateCommitMessage = (
+    header: string,
+): [boolean, string] | [boolean] => {
+    if (!COMMIT_MESSAGE_REGEXP.test(header)) {
+        return [false, COMMIT_ERROR_MESSAGE];
+    }
+    return [true];
+};
+
 const config: UserConfig = {
     extends: [],
     defaultIgnores: true,
     plugins: [
         {
             rules: {
-                'custom-commit-format': ({ header }: { header: any }) => {
-                    if (!COMMIT_MESSAGE_REGEX.test(header)) {
-                        return [false, ERROR_MESSAGE];
-                    }
-                    return [true];
-                },
+                'custom-commit-format': ({ header }: { header: any }) =>
+                    validateCommitMessage(header),
             },
         },
     ],
