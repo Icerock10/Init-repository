@@ -1,11 +1,14 @@
 {
     "exclude": ["commitlint.config.ts"],
+    "include": ["**/*.ts", "**/*.js", "**/*.tsx"],
     "compilerOptions": {
         "strict": true,
         "skipLibCheck": true,
         "target": "ESNext",
         "module": "NodeNext",
         "moduleResolution": "NodeNext",
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "noEmit": true,
+        "allowImportingTsExtensions": true
     }
 }
