@@ -1,14 +1,17 @@
 {
-    "exclude": ["commitlint.config.ts"],
-    "include": ["**/*.ts", "**/*.js", "**/*.tsx"],
+    "include": ["**/*.ts", "**/*.js"],
+    "exclude": ["node_modules", "dangerfile.ts"],
     "compilerOptions": {
         "strict": true,
+        "noUncheckedIndexedAccess": true,
+        "noPropertyAccessFromIndexSignature": true,
+        "esModuleInterop": true,
         "skipLibCheck": true,
+        "resolveJsonModule": true,
         "target": "ESNext",
         "module": "NodeNext",
         "moduleResolution": "NodeNext",
-        "esModuleInterop": true,
-        "noEmit": true,
-        "allowImportingTsExtensions": true
+        "types": ["node"],
+        "allowSyntheticDefaultImports": true
     }
 }

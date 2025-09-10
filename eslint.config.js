@@ -25,7 +25,7 @@ const filesConfig = {
 
 /** @type {Config} */
 const ignoresConfig = {
-    ignores: ['packages', 'commitlint.config.ts', 'dangerfile.ts'],
+    ignores: ['commitlint.config.ts', 'dangerfile.ts'],
 };
 
 /** @type {Config} */
