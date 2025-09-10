@@ -10,7 +10,7 @@ let Config;
 
 /** @type {Config} */
 const ignoresConfig = {
-    ignores: ['build'],
+    ignores: ['build', 'packages.d.ts'],
 };
 
 /** @type {Config} */

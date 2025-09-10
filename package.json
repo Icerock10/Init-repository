@@ -12,6 +12,8 @@
         "frontend"
     ],
     "scripts": {
+        "postinstall": "npm run build:shared",
+        "build:shared": "npm run build -w shared",
         "build:frontend": "npm run build -w frontend",
         "lint:editor": "editorconfig-checker",
         "lint:fs": "ls-lint",

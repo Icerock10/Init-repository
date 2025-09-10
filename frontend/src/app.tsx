@@ -1,9 +1,9 @@
 import { useCallback, useState } from 'react';
+import { type UserDto } from 'shared';
 
+import '~/App.scss';
 import reactLogo from '~/assets/react.svg';
 import viteLogo from '~/assets/vite.svg';
-
-import './App.scss';
 
 const App: React.FC = () => {
     const firstNumberOfUser: number = 0;
@@ -12,6 +12,13 @@ const App: React.FC = () => {
     const changeCountOnClick = useCallback(() => {
         setCount(count + counterNumber);
     }, [count]);
+
+    const user: UserDto = {
+        avatarUrl: ' this is avatar',
+        email: 'string',
+        id: 5,
+        name: 'string',
+    };
 
     return (
         <>
@@ -31,7 +38,8 @@ const App: React.FC = () => {
             <div className="card">
                 <button onClick={changeCountOnClick}>count is {count}</button>
                 <p>
-                    Edit <code>src/App.tsx</code> and save to test HMR
+                    Edit <code>src/App.tsx</code>
+                    {user.avatarUrl} and save to test HMR
                 </p>
             </div>
             <p className="read-the-docs">

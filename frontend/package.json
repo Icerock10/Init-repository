@@ -1,7 +1,6 @@
 {
     "name": "frontend",
     "private": true,
-    "version": "0.0.0",
     "type": "module",
     "scripts": {
         "dev": "vite",
@@ -10,11 +9,12 @@
         "lint:css": "npx stylelint \"src/**/*.scss\"",
         "lint:js": "npx eslint \"src/**/*.{ts,tsx}\"",
         "lint:js:fix": "npx eslint \"src/**/*.{ts,tsx}\" --fix",
-        "lint:css:fix": "npx eslint \"src/**/*.{css,scss}\" --fix",
+        "lint:css:fix": "npx stylelint \"src/**/*.{css,scss}\" --fix",
         "lint:type": "npx tsc --noEmit",
         "lint": "npm run lint:type && npm run lint:js"
     },
     "dependencies": {
+        "shared": "*",
         "react": "^19.1.1",
         "react-dom": "^19.1.1"
     },

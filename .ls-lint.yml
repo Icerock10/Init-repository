@@ -11,8 +11,8 @@ ignore:
     - .vscode
     - node_modules
     - build
-    - packages/shared/build
-    - packages/shared/node_modules
+    - shared/build
+    - shared/node_modules
     - frontend/build
     - frontend/node_modules
     - backend/build
