@@ -25,73 +25,78 @@ This is the simple repository starter app.
 
 # 📁 Architecture
 
-## 📂 Frontend Folder Structure:
+### 🟩 Frontend Structure
 
+```bash
 frontend/
 ├── src/
-│ ├── libs/
-│ │ ├── api/
-│ │ ├── ui/
-│ │ ├── hooks/
-│ │ ├── constants/
-│ │ └── utils/
-│ ├── modules/
-│ │ ├── users/
-│ │ │ └── components/
-│ │ ├── auth/
-│ │ └── ...
-│ │ ├── orders/
-│ │ │ └── ...
-│ └── index.tsx
+│   ├── libs/
+│   │   ├── api/
+│   │   ├── ui/
+│   │   ├── hooks/
+│   │   ├── constants/
+│   │   └── utils/
+│   ├── modules/
+│   │   ├── users/
+│   │   │   └── components/
+│   │   ├── auth/
+│   │   ├── orders/
+│   │   │   └── ...
+│   └── index.tsx
 └── vite.config.ts
+```
 
-## 📂 Backend Folder Structure:
+## 🟥 Backend Structure:
 
+```bash
 backend/
 ├── src/
-│ ├── libs/
-│ │ ├── db/
-│ │ ├── logger/
-│ │ ├── auth/
-│ │ ├── constants/
-│ │ └── utils/
-│ ├── modules/
-│ │ ├── users/
-│ │ │ ├── controller/ # Fastify Routes
-│ │ │ ├── service/
-│ │ │ ├── model/
-│ │ │ ├── types/
-│ │ │ └── enums/
-│ │ ├── orders/
-│ │ │ └── ...
-│ └── index.ts
+│   ├── libs/
+│   │   ├── db/
+│   │   ├── logger/
+│   │   ├── auth/
+│   │   ├── constants/
+│   │   └── utils/
+│   ├── modules/
+│   │   ├── users/
+│   │   │   ├── controller/   # Fastify Routes
+│   │   │   ├── service/
+│   │   │   ├── model/
+│   │   │   ├── types/
+│   │   │   └── enums/
+│   │   ├── orders/
+│   │   │   └── ...
+│   └── index.ts
 └── tsconfig.json
+```
 
-## 📂 Shared Folder Structure:
+## 🟦 Shared Structure:
 
+```bash
 shared/
 ├── src/
-│ ├── libs/
-│ │ ├── constants/
-│ │ │ └── constants.ts
-│ │ ├── types/
-│ │ │ └── types.ts
-│ │ ├── enums/
-│ │ │ └── enums.ts
-│ │ ├── utils/
-│ │ │ └── index.ts
-│ │ └── validation/
-│ │ └── index.ts
-│ ├── modules/
-│ │ ├── users/
-│ │ │ ├── types/
-│ │ │ ├── types.ts
-│ │ ├── orders/
-│ │ │ ├── types/
-│ │ │ ├── types.ts
-│ │ └── ...
-│ └── index.ts
+│   ├── libs/
+│   │   ├── constants/
+│   │   │   └── constants.ts
+│   │   ├── types/
+│   │   │   └── types.ts
+│   │   ├── enums/
+│   │   │   └── enums.ts
+│   │   ├── utils/
+│   │   │   └── index.ts
+│   │   └── validation/
+│   │       └── index.ts
+│   ├── modules/
+│   │   ├── users/
+│   │   │   ├── types/
+│   │   │   └── types.ts
+│   │   ├── orders/
+│   │   │   ├── types/
+│   │   │   └── types.ts
+│   │   └── ...
+│   └── index.ts
 └── package.json
+```
 
 ## 🧑‍💻 CI
 
