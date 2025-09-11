@@ -23,25 +23,75 @@ This is the simple repository starter app.
 - run **`npx simple-git-hooks`** at the root of the project, before the start (it will set
   the [pre-commit hook](https://www.npmjs.com/package/simple-git-hooks) for any commits).
 
-## 📁 Architecture
+# 📁 Architecture
 
-# 📂 Shared Folder Structure:
+## 📂 Frontend Folder Structure:
 
-    ├── src/
-    │   └── libs/
-    │         └── constants/
-    │            └── constants.ts
-    │         └── types/
-    │            └── types.ts
-    │         └── enums/
-    │    └── modules/
-    │       └── users/
-    │           └── types/
-    │               └── types.ts
-    │           └── enums/
-    │               └── enums.ts
-    │       └── users.ts
-    └── index.ts
+frontend/
+├── src/
+│ ├── libs/
+│ │ ├── api/
+│ │ ├── ui/
+│ │ ├── hooks/
+│ │ ├── constants/
+│ │ └── utils/
+│ ├── modules/
+│ │ ├── users/
+│ │ │ └── components/
+│ │ ├── auth/
+│ │ └── ...
+│ │ ├── orders/
+│ │ │ └── ...
+│ └── index.tsx
+└── vite.config.ts
+
+## 📂 Backend Folder Structure:
+
+backend/
+├── src/
+│ ├── libs/
+│ │ ├── db/
+│ │ ├── logger/
+│ │ ├── auth/
+│ │ ├── constants/
+│ │ └── utils/
+│ ├── modules/
+│ │ ├── users/
+│ │ │ ├── controller/ # Fastify Routes
+│ │ │ ├── service/
+│ │ │ ├── model/
+│ │ │ ├── types/
+│ │ │ └── enums/
+│ │ ├── orders/
+│ │ │ └── ...
+│ └── index.ts
+└── tsconfig.json
+
+## 📂 Shared Folder Structure:
+
+shared/
+├── src/
+│ ├── libs/
+│ │ ├── constants/
+│ │ │ └── constants.ts
+│ │ ├── types/
+│ │ │ └── types.ts
+│ │ ├── enums/
+│ │ │ └── enums.ts
+│ │ ├── utils/
+│ │ │ └── index.ts
+│ │ └── validation/
+│ │ └── index.ts
+│ ├── modules/
+│ │ ├── users/
+│ │ │ ├── types/
+│ │ │ ├── types.ts
+│ │ ├── orders/
+│ │ │ ├── types/
+│ │ │ ├── types.ts
+│ │ └── ...
+│ └── index.ts
+└── package.json
 
 ## 🧑‍💻 CI
 
