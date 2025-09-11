@@ -1,13 +1,13 @@
-# Backend, how to start diagramm:
+# 🟥 Backend (Fastify + Node + MongoDB), how to start:
 
 ```mermaid
 flowchart TD
-    A[Load Config (.env / config module)] --> B[Initialize Database Connection]
-    B --> C[Create Fastify Instance (server-application)]
+    A["Load Config (.env / config module)"] --> B[Initialize DB Connection]
+    B --> C["Create Fastify Instance (server-application)"]
     C --> D[Register Middleware / Logger / HTTP Plugins]
-    D --> E[Register Controllers (Routes)]
-    E --> F[Attach Services (Email, Token, Encryptor)]
-    F --> G[Start Server (startServer)]
+    D --> E["Register Controllers(Routes)"]
+    E --> F["Attach Services (Email, Token, Encryptor)"]
+    F --> G["Start Server (startServer)"]
 ```
 
 ## 🔍 Short explanation:
