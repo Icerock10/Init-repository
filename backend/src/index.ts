@@ -1,5 +1,3 @@
-const initServer = (): boolean => {
-    return true;
-};
+import { serverApplication } from './libs/modules/server-application/server-application.js';
 
-export { initServer };
+await serverApplication.init();
