@@ -52,11 +52,13 @@ frontend/
 backend/
 ├── src/
 │   ├── libs/
-│   │   ├── db/
-│   │   ├── logger/
-│   │   ├── auth/
-│   │   ├── constants/
-│   │   └── utils/
+│   │   ├──modules/
+│   │   │   ├── db/
+│   │   │   ├── logger/
+│   │   │   ├── server-application/
+│   │   │   ├── config/
+│   ├── enums/
+│   │   └── enums.ts
 │   ├── modules/
 │   │   ├── users/
 │   │   │   ├── controller/   # Fastify Routes
@@ -77,19 +79,13 @@ shared/
 ├── src/
 │   ├── libs/
 │   │   ├── constants/
-│   │   │   └── constants.ts
 │   │   ├── types/
-│   │   │   └── types.ts
 │   │   ├── enums/
-│   │   │   └── enums.ts
-│   │   ├── utils/
-│   │   │   └── index.ts
-│   │   └── validation/
-│   │       └── index.ts
+│   │   └── modules/
+│   │       └── http/
 │   ├── modules/
 │   │   ├── users/
 │   │   │   ├── types/
-│   │   │   └── types.ts
 │   │   ├── orders/
 │   │   │   ├── types/
 │   │   │   └── types.ts
