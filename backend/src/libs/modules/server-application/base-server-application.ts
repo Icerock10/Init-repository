@@ -6,6 +6,8 @@ import { fileURLToPath } from 'node:url';
 import { type Config } from '~/libs/modules/config/libs/types/types.js';
 import { type DataBase } from '~/libs/modules/database/libs/types/types.js';
 import { type Logger } from '~/libs/modules/logger/libs/types/types.js';
+import { userService } from '~/modules/users/users.js';
+import { authorization as authorizationPlugin } from '~/plugins/authorization/authorization.js';
 
 import {
     type ServerApplication,
@@ -46,15 +48,15 @@ class BaseServerApplication implements ServerApplication {
     }
 
     public addRoute(parameters: ServerApplicationRouteParameters): void {
-        const { handler, method, path } = parameters;
+        const { handler, method, path, validation } = parameters;
 
         this.app.route({
             handler,
             method,
-            // schema: {
-            //     body: validation?.body, /TODO: add validation schema
-            //     querystring: validation?.queryString,
-            // },
+            schema: {
+                body: validation?.body,
+                querystring: validation?.queryString,
+            },
             url: path,
         });
 
@@ -71,7 +73,7 @@ class BaseServerApplication implements ServerApplication {
         this.logger.info('Application initialization');
 
         await this.initServer();
-
+        await this.initPlugins();
         this.initRoutes();
         await this.database.connect();
 
@@ -117,6 +119,13 @@ class BaseServerApplication implements ServerApplication {
         return publicApiRoutes;
     }
 
+    private async initPlugins(): Promise<void> {
+        await this.app.register(authorizationPlugin, {
+            userService,
+            whiteRoutes: this.getWhiteRoutes(),
+        });
+    }
+    // TODO: feat add errorHandler
     private async initServer(): Promise<void> {
         const staticPath = path.join(
             path.dirname(fileURLToPath(import.meta.url)),

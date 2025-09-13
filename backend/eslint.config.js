@@ -15,5 +15,3 @@ const overridesConfigs = [{}];
 const config = [...baseConfig, ignoresConfig, ...overridesConfigs];
 
 export default config;
-
-// TODO: change from SQL to MongoDB
