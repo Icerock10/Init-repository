@@ -1,6 +1,5 @@
 import { type AppEnvironment } from '~/libs/enums/enums.js';
-
-import { type ValueOf } from './types.js';
+import { type ValueOf } from '~/libs/types/types.js';
 
 type EnvironmentSchema = {
     APP: {
@@ -10,6 +9,11 @@ type EnvironmentSchema = {
     };
     DB: {
         CONNECTION_STRING: string;
+    };
+    TOKEN: {
+        ENCRYPTION: string;
+        EXPIRATION: string;
+        SECRET: string;
     };
 };
 

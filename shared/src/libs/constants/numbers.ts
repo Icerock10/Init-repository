@@ -1,5 +1,6 @@
-const ZERO = 0;
-const ONE = 1;
-const LAST_INDEX = -1;
+const HandlerParameterIndexes = {
+    FIRST_PARAM_INDEX: 0,
+    SECOND_PARAM_INDEX: 1,
+} as const;
 
-export { LAST_INDEX, ONE, ZERO };
+export { HandlerParameterIndexes };

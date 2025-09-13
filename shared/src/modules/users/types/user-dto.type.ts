@@ -1,7 +1,6 @@
 type UserDto = {
-    avatarUrl: null | string;
     email: string;
-    id: number;
+    id: null | string;
     name: string;
 };
 

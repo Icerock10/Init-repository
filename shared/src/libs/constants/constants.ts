@@ -1,1 +1,1 @@
-export { LAST_INDEX, ONE, ZERO } from './numbers.js';
+export { HandlerParameterIndexes } from './numbers.js';

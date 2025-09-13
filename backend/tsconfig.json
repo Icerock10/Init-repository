@@ -4,6 +4,8 @@
     "exclude": ["node_modules", "build"],
     "compilerOptions": {
         "baseUrl": ".",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
         "outDir": "build",
         "paths": {
             "~/*": ["./src/*"]

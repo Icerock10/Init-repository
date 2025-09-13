@@ -16,7 +16,7 @@ import {
 type Constructor = {
     apis: ServerApplicationApi[];
     config: Config;
-    dataBase: DataBase;
+    database: DataBase;
     logger: Logger;
 };
 
@@ -29,15 +29,15 @@ class BaseServerApplication implements ServerApplication {
 
     private config: Config;
 
-    private dataBase: DataBase;
+    private database: DataBase;
 
     private logger: Logger;
 
-    public constructor({ apis, config, dataBase, logger }: Constructor) {
+    public constructor({ apis, config, database, logger }: Constructor) {
         this.config = config;
         this.logger = logger;
         this.apis = apis;
-        this.dataBase = dataBase;
+        this.database = database;
         this.app = Fastify({
             routerOptions: {
                 ignoreTrailingSlash: true,
@@ -73,7 +73,7 @@ class BaseServerApplication implements ServerApplication {
         await this.initServer();
 
         this.initRoutes();
-        await this.dataBase.connect();
+        await this.database.connect();
 
         try {
             await this.app.listen({

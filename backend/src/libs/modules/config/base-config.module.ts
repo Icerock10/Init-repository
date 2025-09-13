@@ -40,6 +40,26 @@ class BaseConfig implements Config {
                     format: String,
                 },
             },
+            TOKEN: {
+                ENCRYPTION: {
+                    default: null,
+                    doc: 'Encryption algorithm for JWTs',
+                    env: 'JWT_ENCRYPTION',
+                    format: String,
+                },
+                EXPIRATION: {
+                    default: null,
+                    doc: 'Expiration time for JWTs',
+                    env: 'JWT_EXPIRATION',
+                    format: String,
+                },
+                SECRET: {
+                    default: null,
+                    doc: 'Secret key for JWTs',
+                    env: 'JWT_SECRET_KEY',
+                    format: String,
+                },
+            },
         });
     }
 

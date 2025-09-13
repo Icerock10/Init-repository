@@ -14,10 +14,9 @@ const App: React.FC = () => {
     }, [count]);
 
     const user: UserDto = {
-        avatarUrl: ' this is avatar',
         email: 'string',
-        id: 5,
-        name: 'string',
+        id: 'asdads',
+        name: 'John',
     };
 
     return (
@@ -39,7 +38,7 @@ const App: React.FC = () => {
                 <button onClick={changeCountOnClick}>count is {count}</button>
                 <p>
                     Edit <code>src/App.tsx</code>
-                    {user.avatarUrl} and save to test HMR
+                    {user.name} and save to test HMR
                 </p>
             </div>
             <p className="read-the-docs">

@@ -61,11 +61,12 @@ backend/
 │   │   └── enums.ts
 │   ├── modules/
 │   │   ├── users/
-│   │   │   ├── controller/   # Fastify Routes
-│   │   │   ├── service/
-│   │   │   ├── model/
-│   │   │   ├── types/
-│   │   │   └── enums/
+│   │   │   ├── user.controller.ts   # Fastify Routes
+│   │   │   ├── users.ts
+│   │   │   ├── user.model.ts
+│   │   │   ├── libs/
+│   │   │   │   ├── types/
+│   │   │   │   └── enums/
 │   │   ├── orders/
 │   │   │   └── ...
 │   └── index.ts
