@@ -1,1 +1,2 @@
-export { type UserDto } from './types/types.js';
+export { UsersApiPath } from './enums/enums.js';
+export { type UserDto, type UserSignUpRequestDto } from './types/types.js';

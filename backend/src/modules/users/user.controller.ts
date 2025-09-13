@@ -5,29 +5,13 @@ import {
 } from '~/libs/modules/controller/controller.js';
 import { type Logger } from '~/libs/modules/logger/libs/types/types.js';
 
+import {
+    APIPath,
+    HTTPRequestMethod,
+    UsersApiPath,
+    type UserSignUpRequestDto,
+} from './libs/types/types.js';
 import { type UserService } from './user.service.js';
-
-const HTTPRequestMethod = {
-    GET: 'GET',
-    POST: 'POST',
-} as const;
-
-type UserSignUpRequestDto = {
-    email: string;
-    name: string;
-    password: string;
-};
-
-const UsersApiPath = {
-    CREATE: '/create',
-    ROOT: '/',
-    USER: '/:id',
-} as const;
-
-const APIPath = {
-    AUTH: '/auth',
-    USERS: '/users',
-} as const;
 
 class UserController extends BaseController {
     private userService: UserService;

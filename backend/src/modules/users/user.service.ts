@@ -1,15 +1,8 @@
-import { type UserDto } from 'shared';
-
 import { type Encryptor } from '~/libs/modules/encryptor/encryptor.js';
 
+import { type UserDto, type UserSignUpRequestDto } from './libs/types/types.js';
 import { UserEntity } from './user.entity.js';
 import { type UserRepository } from './user.repository.js';
-
-type UserSignUpRequestDto = {
-    email: string;
-    name: string;
-    password: string;
-};
 
 class UserService {
     private encryptor: Encryptor;
