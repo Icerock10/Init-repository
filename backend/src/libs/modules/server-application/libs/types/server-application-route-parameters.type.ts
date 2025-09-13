@@ -1,8 +1,8 @@
 import { type FastifyReply, type FastifyRequest } from 'fastify';
-import { type ZodType as ValidationSchema } from 'zod';
 
 import { type HTTPMethod } from '~/libs/modules/http/http.js';
-// TODO: fix move z lib to shared
+import { type ValidationSchema } from '~/libs/types/types.js';
+
 type ServerApplicationRouteParameters = {
     handler: (
         request: FastifyRequest,
