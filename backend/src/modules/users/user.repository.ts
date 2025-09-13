@@ -1,10 +1,12 @@
+import { type ReturnModelType } from '@typegoose/typegoose';
+
 import { BaseRepository } from '~/libs/modules/database/database.js';
 
 import { UserEntity } from './user.entity.js';
-import { type User, userModel } from './user.model.js';
+import { type User } from './user.model.js';
 
 class UserRepository extends BaseRepository<typeof User, UserEntity> {
-    constructor() {
+    public constructor(userModel: ReturnModelType<typeof User>) {
         super(userModel);
     }
 
