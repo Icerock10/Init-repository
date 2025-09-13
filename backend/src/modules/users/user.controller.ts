@@ -43,6 +43,7 @@ class UserController extends BaseController {
             isPublic: true,
             method: HTTPRequestMethod.POST,
             path: UsersApiPath.CREATE,
+            validation: {}, //TODO: implement validation
         });
     }
     private async create(

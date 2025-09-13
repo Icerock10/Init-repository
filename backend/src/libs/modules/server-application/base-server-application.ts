@@ -1,11 +1,18 @@
 import fastifyStatic from '@fastify/static';
-import Fastify, { type FastifyInstance } from 'fastify';
+import Fastify, { type FastifyError, type FastifyInstance } from 'fastify';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { HTTPCode, HTTPError } from '~/libs/enums/enums.js';
 import { type Config } from '~/libs/modules/config/libs/types/types.js';
 import { type DataBase } from '~/libs/modules/database/libs/types/types.js';
 import { type Logger } from '~/libs/modules/logger/libs/types/types.js';
+import {
+    type ServerCommonErrorResponse,
+    ServerErrorType,
+    type ServerValidationErrorResponse,
+    type ValidationError,
+} from '~/libs/types/types.js';
 import { userService } from '~/modules/users/users.js';
 import { authorization as authorizationPlugin } from '~/plugins/authorization/authorization.js';
 
@@ -119,13 +126,67 @@ class BaseServerApplication implements ServerApplication {
         return publicApiRoutes;
     }
 
+    private initErrorHandler(): void {
+        this.app.setErrorHandler(
+            (error: FastifyError | ValidationError, _request, reply) => {
+                if ('issues' in error) {
+                    this.logger.error(`[Validation Error]: ${error.message}`);
+
+                    for (let issue of error.issues) {
+                        this.logger.error(
+                            `[${issue.path.toString()}] — ${issue.message}`,
+                        );
+                    }
+
+                    const response: ServerValidationErrorResponse = {
+                        details: error.issues.map((issue) => ({
+                            message: issue.message,
+                            path: issue.path,
+                        })),
+                        errorType: ServerErrorType.VALIDATION,
+                        message: error.message,
+                    };
+
+                    return reply
+                        .status(HTTPCode.UNPROCESSED_ENTITY)
+                        .send(response);
+                }
+
+                if (error instanceof HTTPError) {
+                    this.logger.error(
+                        `[HTTP Error]: ${String(error.status)} – ${error.message}`,
+                    );
+
+                    const response: ServerCommonErrorResponse = {
+                        errorType: ServerErrorType.COMMON,
+                        message: error.message,
+                    };
+
+                    return reply.status(error.status).send(response);
+                }
+
+                this.logger.error(error.message);
+
+                const response: ServerCommonErrorResponse = {
+                    errorType: ServerErrorType.COMMON,
+                    message: error.message,
+                };
+
+                return reply
+                    .status(HTTPCode.INTERNAL_SERVER_ERROR)
+                    .send(response);
+            },
+        );
+    }
+    // TODO: feat add errorHandler
+
     private async initPlugins(): Promise<void> {
         await this.app.register(authorizationPlugin, {
             userService,
             whiteRoutes: this.getWhiteRoutes(),
         });
     }
-    // TODO: feat add errorHandler
+
     private async initServer(): Promise<void> {
         const staticPath = path.join(
             path.dirname(fileURLToPath(import.meta.url)),

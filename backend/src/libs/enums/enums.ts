@@ -1,1 +1,1 @@
-export { AppEnvironment } from 'shared';
+export { AppEnvironment, HTTPCode, HTTPError } from 'shared';
