@@ -8,9 +8,9 @@ import { modelOptions, type mongoose, prop } from '@typegoose/typegoose';
     },
 })
 class AbstractModel {
-    @prop() public _id!: mongoose.Types.ObjectId;
-    @prop() public createdAt?: Date;
-    @prop() public updatedAt?: Date;
+    public _id!: mongoose.Types.ObjectId;
+    @prop({ type: () => Date }) public createdAt?: Date;
+    @prop({ type: () => Date }) public updatedAt?: Date;
     public get id(): string {
         return this._id.toHexString();
     }

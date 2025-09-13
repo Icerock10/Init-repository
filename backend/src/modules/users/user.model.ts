@@ -6,10 +6,10 @@ class User extends AbstractModel {
     @prop({ type: () => String })
     public email!: string;
 
-    @prop({ required: true })
+    @prop({ type: () => String })
     public name!: string;
 
-    @prop({ required: true })
+    @prop({ type: () => String })
     public passwordHash!: string;
 }
 
